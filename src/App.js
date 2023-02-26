@@ -5,8 +5,33 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 function App() {
   const [tasks, setTasks] = useState(data);
 
-  const handleDrag = (e) => {
-    console.log(e);
+  const handleDrag = (element) => {
+    if (!element.destination) return;
+    const { source, destination } = element;
+    const newData = tasks;
+    if (source.droppableId != destination.droppableId) {
+      const sourceSecIndex = newData.findIndex(
+        (e) => e.id == source.droppableId
+      );
+      const destinationSecIndex = newData.findIndex(
+        (e) => e.id == destination.droppableId
+      );
+
+      const sourceSection = newData[sourceSecIndex];
+      const destinationSection = newData[destinationSecIndex];
+      console.log(sourceSection, destinationSection);
+
+      const sourceTask = [...sourceSection.tasks];
+      const destinationTask = [...destinationSection.tasks];
+
+      const [removed] = sourceTask.splice(source.index, 1);
+      destinationTask.splice(destination.index, 0, removed);
+
+      newData[sourceSecIndex].tasks = sourceTask;
+      newData[destinationSecIndex].tasks = destinationTask;
+
+      setTasks(newData);
+    }
   };
 
   return (
