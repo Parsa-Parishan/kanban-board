@@ -13,35 +13,40 @@ function App() {
             return (
               <Droppable key={task.id} droppableId={task.id}>
                 {(provided) => {
-                  <div
-                    className="tasks"
-                    {...provided.droppableProps}
-                    ref={provided.innerRef}
-                  >
-                    <h2>{task.title}</h2>
-                    {task.tasks.map((section) => {
-                      return (
-                        <Draggable
-                          key={section.id}
-                          index={index}
-                          draggableId={section.id}
-                        >
-                          {(provided, snapshot) => {
-                            <div
-                              className="task"
-                              key={section.id}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                              ref={provided.innerRef}
-                              
-                            >
-                              <h5>{section.title}</h5>
-                            </div>;
-                          }}
-                        </Draggable>
-                      );
-                    })}
-                  </div>;
+                  return (
+                    <div
+                      className="tasks"
+                      {...provided.droppableProps}
+                      ref={provided.innerRef}
+                    >
+                      <h2>{task.title}</h2>
+                      {task.tasks.map((section, index) => {
+                        return (
+                          <Draggable
+                            key={section.id}
+                            index={index}
+                            draggableId={section.id}
+                          >
+                            {(provided, snapshot) => {
+                              return (
+                                <div
+                                  className="task"
+                                  key={section.id}
+                                  {...provided.draggableProps}
+                                  {...provided.dragHandleProps}
+                                  ref={provided.innerRef}
+                                >
+                                  <h5>{section.title}</h5>
+
+                                  {provided.placeholder}
+                                </div>
+                              );
+                            }}
+                          </Draggable>
+                        );
+                      })}
+                    </div>
+                  );
                 }}
               </Droppable>
             );
