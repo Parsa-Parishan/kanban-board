@@ -1,0 +1,39 @@
+.App {
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 1rem;
+  main {
+    display: grid;
+    @media (min-width: 768px) {
+      display: flex;
+      flex-direction: row;
+      align-items: initial;
+    }
+    place-items: center;
+    gap: 2rem;
+    border: 1px solid green;
+    width: 90%;
+    height: 90vh;
+    .tasks {
+      border: 1px solid;
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      @media (min-width: 768px) {
+        width: 30%;
+      }
+      gap: 0.5rem;
+      h2 {
+        background: gray;
+        border-radius: 10px;
+        padding: 1rem 0.5rem;
+      }
+      .task {
+        background-color: lightgray;
+        border-radius: 10px;
+      }
+    }
+  }
+}

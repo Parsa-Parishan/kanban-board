@@ -6,20 +6,22 @@ function App() {
 
   return (
     <div className="App">
-      {tasks.map((task) => {
-        return (
-          <div className="tasks">
-            <h3>{task.title}</h3>
-            {task.tasks.map((section) => {
-              return (
-                <div className="taks">
-                  <h5>{section.title}</h5>
-                </div>
-              );
-            })}
-          </div>
-        );
-      })}
+      <main>
+        {tasks.map((task) => {
+          return (
+            <div className="tasks">
+              <h2>{task.title}</h2>
+              {task.tasks.map((section) => {
+                return (
+                  <div className="task">
+                    <h5>{section.title}</h5>
+                  </div>
+                );
+              })}
+            </div>
+          );
+        })}
+      </main>
     </div>
   );
 }
