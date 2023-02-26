@@ -21,9 +21,24 @@ function App() {
                     <h2>{task.title}</h2>
                     {task.tasks.map((section) => {
                       return (
-                        <div className="task">
-                          <h5>{section.title}</h5>
-                        </div>
+                        <Draggable
+                          key={section.id}
+                          index={index}
+                          draggableId={section.id}
+                        >
+                          {(provided, snapshot) => {
+                            <div
+                              className="task"
+                              key={section.id}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              ref={provided.innerRef}
+                              
+                            >
+                              <h5>{section.title}</h5>
+                            </div>;
+                          }}
+                        </Draggable>
                       );
                     })}
                   </div>;
