@@ -35,6 +35,10 @@ function App() {
                                   {...provided.draggableProps}
                                   {...provided.dragHandleProps}
                                   ref={provided.innerRef}
+                                  style={{
+                                    ...provided.draggableProps.style,
+                                    opacity: snapshot.isDragging ? "0.5" : "1",
+                                  }}
                                 >
                                   <h5>{section.title}</h5>
 
@@ -45,6 +49,7 @@ function App() {
                           </Draggable>
                         );
                       })}
+                      {provided.placeholder}
                     </div>
                   );
                 }}
