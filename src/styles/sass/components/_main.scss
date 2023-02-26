@@ -21,18 +21,31 @@
       display: flex;
       flex-direction: column;
       width: 90%;
+      &.toDo {
+        background: rgba(207, 82, 97);
+      }
+      &.inProgress {
+        background: rgba(106, 155, 242);
+      }
+      &.Completed {
+        background: rgba(238, 174, 92);
+      }
       @media (min-width: 768px) {
         width: 30%;
       }
       gap: 0.5rem;
       h2 {
-        background: gray;
         border-radius: 10px;
         padding: 1rem 0.5rem;
       }
       .task {
-        background-color: lightgray;
+        background: rgba(250, 237, 238);
         border-radius: 10px;
+        margin-inline: 0.5rem;
+        h5 {
+          padding: 0.5rem;
+          font-size: 1.25rem;
+        }
       }
     }
   }

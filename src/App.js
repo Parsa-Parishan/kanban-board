@@ -44,7 +44,7 @@ function App() {
                 {(provided) => {
                   return (
                     <div
-                      className="tasks"
+                      className={`tasks ${task.id}`}
                       {...provided.droppableProps}
                       ref={provided.innerRef}
                     >
