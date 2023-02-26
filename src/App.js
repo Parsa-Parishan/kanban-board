@@ -5,9 +5,13 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 function App() {
   const [tasks, setTasks] = useState(data);
 
+  const handleDrag = (e) => {
+    console.log(e);
+  };
+
   return (
     <div className="App">
-      <DragDropContext>
+      <DragDropContext onDragEnd={handleDrag}>
         <main>
           {tasks.map((task) => {
             return (
