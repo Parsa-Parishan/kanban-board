@@ -13,11 +13,10 @@
     }
     place-items: center;
     gap: 2rem;
-    border: 1px solid green;
     width: 90%;
     height: 90vh;
     .tasks {
-      border: 1px solid;
+      border-radius: 5px;
       display: flex;
       flex-direction: column;
       width: 90%;

@@ -128,7 +128,6 @@ h4 {
   display: grid;
   place-items: center;
   gap: 2rem;
-  border: 1px solid green;
   width: 90%;
   height: 90vh;
 }
@@ -140,7 +139,7 @@ h4 {
   }
 }
 .App main .tasks {
-  border: 1px solid;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   width: 90%;
