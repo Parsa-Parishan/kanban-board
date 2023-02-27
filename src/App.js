@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import data from "./data";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import Form from "./components/Form";
 
 function App() {
   const [tasks, setTasks] = useState(data);
@@ -8,34 +9,36 @@ function App() {
   const handleDrag = (element) => {
     if (!element.destination) return;
     const { source, destination } = element;
+    console.log(element);
     const newData = tasks;
+    const sourceSecIndex = newData.findIndex((e) => e.id == source.droppableId);
+
+    const sourceSection = newData[sourceSecIndex];
+    const destinationSecIndex = newData.findIndex(
+      (e) => e.id == destination.droppableId
+    );
+
+    const destinationSection = newData[destinationSecIndex];
+    const sourceTask = [...sourceSection.tasks];
+    const destinationTask = [...destinationSection.tasks];
+    const [removed] = sourceTask.splice(source.index, 1);
+
     if (source.droppableId != destination.droppableId) {
-      const sourceSecIndex = newData.findIndex(
-        (e) => e.id == source.droppableId
-      );
-      const destinationSecIndex = newData.findIndex(
-        (e) => e.id == destination.droppableId
-      );
-
-      const sourceSection = newData[sourceSecIndex];
-      const destinationSection = newData[destinationSecIndex];
-      console.log(sourceSection, destinationSection);
-
-      const sourceTask = [...sourceSection.tasks];
-      const destinationTask = [...destinationSection.tasks];
-
-      const [removed] = sourceTask.splice(source.index, 1);
       destinationTask.splice(destination.index, 0, removed);
-
       newData[sourceSecIndex].tasks = sourceTask;
       newData[destinationSecIndex].tasks = destinationTask;
-
+      setTasks(newData);
+    } else {
+      newData[sourceSecIndex].tasks = sourceTask;
+      newData[sourceSecIndex].tasks.splice(destination.index, 0, removed);
       setTasks(newData);
     }
   };
 
+
   return (
     <div className="App">
+      {/* <Form addNewTask={addNewTask} /> */}
       <DragDropContext onDragEnd={handleDrag}>
         <main>
           {tasks.map((task) => {
