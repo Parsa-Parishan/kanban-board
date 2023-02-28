@@ -35,10 +35,15 @@ function App() {
     }
   };
 
+  const addNewTask = (e) => {
+    const newData = tasks;
+    newData[0].tasks.splice(0, 0, e);
+    setTasks([...newData]);
+  };
 
   return (
     <div className="App">
-      {/* <Form addNewTask={addNewTask} /> */}
+      <Form addNewTask={addNewTask} />
       <DragDropContext onDragEnd={handleDrag}>
         <main>
           {tasks.map((task) => {
