@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import data from "./data";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import Form from "./components/Form";
+import { FaCheckCircle } from "react-icons/fa";
 
 function App() {
   const [tasks, setTasks] = useState(data);
+  const [show, setShow] = useState(false);
 
   const handleDrag = (element) => {
     if (!element.destination) return;
@@ -22,6 +24,7 @@ function App() {
     const sourceTask = [...sourceSection.tasks];
     const destinationTask = [...destinationSection.tasks];
     const [removed] = sourceTask.splice(source.index, 1);
+    console.log(removed);
 
     if (source.droppableId != destination.droppableId) {
       destinationTask.splice(destination.index, 0, removed);
@@ -40,6 +43,22 @@ function App() {
     newData[0].tasks.splice(0, 0, e);
     setTasks([...newData]);
   };
+
+  const handleModal = (e) => {
+    if (document.querySelector(`.${e}`).className == `modal ${e}`) {
+      document.querySelector(`.${e}`).className = `modal ${e} show`;
+      setShow(true);
+    } else {
+      document.querySelector(`.${e}`).className = `modal ${e}`;
+      setShow(false);
+    }
+  };
+
+  {
+    show
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "auto");
+  }
 
   return (
     <div className="App">
@@ -76,10 +95,23 @@ function App() {
                                     ...provided.draggableProps.style,
                                     opacity: snapshot.isDragging ? "0.5" : "1",
                                   }}
+                                  onClick={() => handleModal(section.id)}
                                 >
-                                  <h5>{section.title}</h5>
+                                  <h5>
+                                    <span
+                                      className={`${
+                                        task.id == "Completed" ? "sho" : "icon"
+                                      }`}
+                                    >
+                                      <FaCheckCircle />
+                                    </span>
+                                    {section.title}
+                                  </h5>
 
                                   {provided.placeholder}
+                                  <div className={`modal ${section.id}`}>
+                                    <h2>{section.title}</h2>
+                                  </div>
                                 </div>
                               );
                             }}

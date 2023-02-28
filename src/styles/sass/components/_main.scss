@@ -1,3 +1,7 @@
+body {
+  padding-bottom: 1.5rem;
+}
+
 .App {
   display: grid;
   place-items: center;
@@ -14,13 +18,13 @@
     place-items: center;
     gap: 2rem;
     width: 90%;
-    height: 90vh;
     .tasks {
       border-radius: 5px;
       display: flex;
       flex-direction: column;
       width: 90%;
       padding: 0.5rem;
+      transition: all 0.5s linear;
       &.toDo {
         background: rgba(207, 82, 97);
       }
@@ -78,4 +82,51 @@
       }
     }
   }
+}
+
+.icon {
+  opacity: 0;
+  transition: display 0.5s linear 0.5s;
+  margin-right: 0.3rem;
+}
+
+.sho {
+  opacity: 1;
+  animation: show 0.5s ease;
+  margin-right: 0.3rem;
+}
+
+@keyframes show {
+  0% {
+    display: none;
+    opacity: 0;
+    transform: scale(0, 0);
+  }
+  1% {
+    display: grid;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+.modal {
+  position: fixed;
+  background-color: rgba(gray, 0.5);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  inset: 0;
+  display: none;
+  place-items: center;
+  opacity: 1;
+  h2 {
+    border: 1px solid;
+  }
+}
+
+.show {
+  display: grid !important;
+  animation: show 0.5s ease;
 }
