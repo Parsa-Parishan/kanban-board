@@ -172,4 +172,31 @@ h4 {
 .App main .tasks .task h5 {
   padding: 0.5rem;
   font-size: 1.25rem;
+}
+.App .add-task {
+  margin-bottom: 1rem;
+  padding: 1rem 0.5rem;
+  background: rgb(94, 195, 127);
+  border-radius: 5px;
+}
+.App .add-task h3 {
+  color: white;
+}
+.App .add-task form input[type=text] {
+  border-radius: 10px;
+  border: none;
+  padding: 0.5rem;
+  margin-right: 0.3rem;
+}
+.App .add-task form input[type=submit] {
+  height: 100%;
+  color: gray;
+  background: rgb(123, 206, 150);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.App .add-task form input[type=submit]:hover {
+  background: rgb(94, 195, 200);
+  color: white;
 }/*# sourceMappingURL=main.css.map */

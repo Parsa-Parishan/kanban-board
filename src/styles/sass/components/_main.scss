@@ -49,4 +49,33 @@
       }
     }
   }
+  .add-task {
+    margin-bottom: 1rem;
+    padding: 1rem 0.5rem;
+    background: rgba(94, 195, 127);
+    border-radius: 5px;
+    h3 {
+      color: white;
+    }
+    form {
+      input[type="text"] {
+        border-radius: 10px;
+        border: none;
+        padding: 0.5rem;
+        margin-right: 0.3rem;
+      }
+      input[type="submit"] {
+        height: 100%;
+        color: gray;
+        background: rgba(123, 206, 150);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover {
+          background: rgba(94, 195, 200);
+          color: white;
+        }
+      }
+    }
+  }
 }
